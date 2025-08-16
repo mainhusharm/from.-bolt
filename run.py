@@ -87,7 +87,7 @@ services = [
         "name": "forex_data_service",
         "command": "python3 forex_data_service/server.py",
         "cwd": ".",
-        "port": 5010
+        "port": 5009
     },
     {
         "name": "frontend",
