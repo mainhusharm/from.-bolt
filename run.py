@@ -41,6 +41,16 @@ def setup_database():
         print(f"Error creating database: {e}")
         sys.exit(1)
 
+def install_forex_service_dependencies():
+    """Install dependencies for the forex data service."""
+    print("Installing forex data service dependencies...")
+    try:
+        subprocess.run(['pip', 'install', '-r', 'forex_data_service/requirements.txt'], check=True)
+        print("Forex data service dependencies installed successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"Error installing forex data service dependencies: {e}")
+        sys.exit(1)
+
 def kill_process_on_port(port):
     try:
         # Find the process ID (PID) using the specified port
@@ -59,6 +69,9 @@ for port in [5005, 5007, 5000, 5175]:
 
 # Build the frontend
 build_frontend()
+
+# Install forex service dependencies
+install_forex_service_dependencies()
 
 # Setup the database
 setup_database()
